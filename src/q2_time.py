@@ -35,8 +35,3 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
 
     # Ya no escribe en un archivo, sino que retorna los datos directamente
     return reduced_data
-
-# Llamar a la función principal para ejecutar el MapReduce y obtener el resultado
-file_path = './farmers-protest-tweets-2021-2-4.json'
-result = q2_time(file_path)
-print(result)

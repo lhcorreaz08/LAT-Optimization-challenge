@@ -36,3 +36,4 @@ def q3_time(file_path: str) -> List[Tuple[str, int]]:
     adapted_output = [(user, count) for user, count in top_user_mentions]
 
     return adapted_output
+
