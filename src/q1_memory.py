@@ -1,3 +1,28 @@
+##############################################
+########Consumo y uso del microservicio#######
+##############################################
+
+def q1_memory() -> List[Tuple[datetime.date, str]]:
+    url = 'https://q1memory-qmij3rko2a-ue.a.run.app/q1_memory'
+    params = {
+        "bucket_name": "lat_optimization_challenge",
+        "blob_name": "data/q1_memory_farmers-protest-tweets-2021-2-4.json"
+    }
+
+    response = requests.post(url, json=params)
+
+    if response.status_code == 200:
+        results_raw = response.json()
+        results = [(datetime.strptime(date_str, '%Y-%m-%d').date(), username) for date_str, username in results_raw]
+        return results
+    else:
+        print(f"Error: {response.status_code}")
+        return []
+
+##############################################
+########Implementación del microservicio######
+##############################################
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from google.cloud import storage
@@ -71,23 +96,3 @@ def reduce_function(mapped_values: List[Tuple[datetime.date, str]]) -> List[Tupl
     # Ordenar y obtener los top 10
     return sorted(usuarios_top_por_fecha, key=lambda x: len(tweets_por_fecha[x[0]]), reverse=True)[:10]
 
-#################################
-########Implementación###########
-#################################
-
-def q1_memory() -> List[Tuple[datetime.date, str]]:
-    url = 'https://q1memory-qmij3rko2a-ue.a.run.app/q1_memory'
-    params = {
-        "bucket_name": "lat_optimization_challenge",
-        "blob_name": "data/q1_memory_farmers-protest-tweets-2021-2-4.json"
-    }
-
-    response = requests.post(url, json=params)
-
-    if response.status_code == 200:
-        results_raw = response.json()
-        results = [(datetime.strptime(date_str, '%Y-%m-%d').date(), username) for date_str, username in results_raw]
-        return results
-    else:
-        print(f"Error: {response.status_code}")
-        return []
