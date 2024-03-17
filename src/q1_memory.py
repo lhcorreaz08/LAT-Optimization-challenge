@@ -1,4 +1,8 @@
-def q1_memory() -> List[Tuple[datetime.date, str]]:
+import requests
+from datetime import datetime
+from typing import List, Tuple
+
+def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
     url = 'https://q1memory-qmij3rko2a-ue.a.run.app/q1_memory'
     params = {
         "bucket_name": "lat_optimization_challenge",
