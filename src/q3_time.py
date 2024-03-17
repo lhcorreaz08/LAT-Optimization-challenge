@@ -3,6 +3,15 @@ import re
 from collections import Counter
 from typing import List, Tuple
 
+### Q3 Time
+
+### Estratégia: Implementar un algoritmo de map-reduce para el procesamiento de los datos, el cual se encarga de leer el archivo y procesar los datos para obtener el top 10 de usuarios más mencionados en los tweets
+
+### Servicios cloud utilizados (GCP): Ninguno
+
+### Mejoras:
+### Manejo de librerias como apache spark para el procesamiento de los datos, esto permitiría el uso de spark para el procesamiento de los datos y el uso de un bucket de GCP para el almacenamiento de los archivos.
+
 def map_mentions(file_path: str) -> List[Tuple[str, int]]:
     user_mentions_counter = Counter()
 

@@ -3,6 +3,17 @@ import json
 from collections import Counter
 from typing import List, Tuple
 
+### Q2 Time
+
+### Estratégia: Implementar un algoritmo de map-reduce para el procesamiento de los datos, el cual se encarga de leer el archivo y procesar los datos para obtener el top 10 de emojis más utilizados en los tweets
+
+### Servicios cloud utilizados (GCP): Ninguno
+
+### Mejoras:
+### Manejo de librerias como apache spark para el procesamiento de los datos, esto permitiría el uso de spark para el procesamiento de los datos y el uso de un bucket de GCP para el almacenamiento de los archivos.
+
+
+
 # Función Map: Procesa cada línea (tweet) para encontrar emojis
 def map_function(line):
     try:
@@ -33,5 +44,4 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
     shuffled_data = shuffle_and_sort(mapped_values)
     reduced_data = reduce_function(shuffled_data)
 
-    # Ya no escribe en un archivo, sino que retorna los datos directamente
     return reduced_data

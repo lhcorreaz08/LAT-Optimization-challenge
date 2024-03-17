@@ -3,6 +3,18 @@ from collections import defaultdict, Counter
 from datetime import datetime
 from typing import List, Tuple, Optional
 
+
+### Q1 Time
+
+### Estratégia: Implementar un algoritmo de map-reduce para el procesamiento de los datos, el cual se encarga de leer el archivo y procesar los datos para obtener el top 10 de usuarios que más tweets han realizado
+
+### Servicios cloud utilizados (GCP): Ninguno
+
+### Mejoras:
+### Manejo de librerias como apache spark para el procesamiento de los datos, esto permitiría el uso de spark para el procesamiento de los datos y el uso de un bucket de GCP para el almacenamiento de los archivos.
+
+
+
 def map_function(line: str) -> Optional[Tuple[datetime.date, str]]:
     try:
         tweet = json.loads(line)
